@@ -2,10 +2,8 @@ class House:
     houses_history = []
 
     def __new__(cls, *args, **kwargs):
-        # Добавляем название дома в историю
-        house_name = args[0]  # Название дома передается как первый аргумент
+        house_name = args[0]
         cls.houses_history.append(house_name)
-        # Создаем новый объект
         return super().__new__(cls)
 
     def __init__(self, name, floors):
@@ -15,18 +13,16 @@ class House:
     def __del__(self):
         print(f"{self.name} снесён, но он останется в истории")
 
-# Пример работы класса
 h1 = House('ЖК Эльбрус', 10)
-print(House.houses_history)  # ['ЖК Эльбрус']
+print(House.houses_history)
 
 h2 = House('ЖК Акация', 20)
-print(House.houses_history)  # ['ЖК Эльбрус', 'ЖК Акация']
+print(House.houses_history)
 
 h3 = House('ЖК Матрёшки', 20)
-print(House.houses_history)  # ['ЖК Эльбрус', 'ЖК Акация', 'ЖК Матрёшки']
+print(House.houses_history)
 
-# Удаление объектов
 del h2
 del h3
 
-print(House.houses_history)  # ['ЖК Эльбрус', 'ЖК Акация', 'ЖК Матрёшки']
+print(House.houses_history)
